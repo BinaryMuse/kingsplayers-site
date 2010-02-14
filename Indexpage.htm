@@ -35,10 +35,28 @@ function MM_swapImage() { //v3.0
 		<script type="text/javascript" src="javascripts/jquery.coda-slider-2.0.js"></script>
 		 <script type="text/javascript">
 			$().ready(function() {
+                var today = new Date();
+                var first = new Date(today.getFullYear(), 0, 1);
+                var theDay = Math.round(((today - first) / 1000 / 60 / 60 / 24) + .5, 0);
+                var start1 = 0; // start show 1 on 1st day, Jan 1
+                var start2 = 81; // start show 2 on 81st day, Mar 22
+                var start3 = 151;
+                var start4 = 207;
+                var start5 = 277;
+                var tab = 1;
+                if(theDay >= start2)
+                    tab = 2;
+                if(theDay >= start3)
+                    tab = 3;
+                if(theDay >= start4)
+                    tab = 4;
+                if(theDay >= start5)
+                    tab = 5;
 				$('#coda-slider-1').codaSlider({
                     dynamicArrows: false,
                     dynamicTabs: false,
-                    autoHeight: true
+                    autoHeight: true,
+                    firstPanelToLoad: tab
                 });
 			});
 		 </script>
